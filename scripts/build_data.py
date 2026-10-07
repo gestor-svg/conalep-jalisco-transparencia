@@ -36,22 +36,29 @@ COL_TIPO_INTEGRANTE = 3
 COL_FECHA_ACT = 30
 
 # Plantel/área de adscripción (tal cual en el archivo) -> municipio real.
-# "alta" = el nombre del plantel ya es el municipio, sin ambigüedad.
-# "estimada" = municipio inferido de una fuente secundaria, no un directorio
-#   oficial de CONALEP Jalisco con domicilios vigentes - puede estar desactualizado
-#   o ser incorrecto. Ver README.md para el detalle y las fuentes.
+# Verificado el 2026-10-07 visitando una por una las 20 páginas de plantel en
+# conalepjalisco.edu.mx (sitio oficial, vigente), que publica domicilio físico
+# por plantel. "alta" = tomado directo de esa fuente oficial. La excepción es
+# DIRECCION GENERAL, cuyo domicilio no está en esa sección del sitio y se tomó
+# de un documento de planeación estatal 2024 (ver PLANTEL_DIRECCION).
+#
+# OJO: el nombre del plantel NO siempre coincide con su municipio real -
+# "Guadalajara 1" está físicamente en Tlaquepaque, y "Jose Maria Martinez"
+# (nombre completo oficial "Tamazula José Ma. Martínez R.") está en Tamazula
+# de Gordiano, no en Mazamitla como se había estimado en una primera pasada
+# con fuentes secundarias - corregido tras verificar contra el sitio oficial.
 PLANTEL_A_MUNICIPIO = {
-    "CENTRO MEXICANO ITALIANO": ("Zapopan", "estimada"),
+    "CENTRO MEXICANO ITALIANO": ("Zapopan", "alta"),
     "TLAQUEPAQUE": ("Tlaquepaque", "alta"),
     "DIRECCION GENERAL": ("Zapopan", "alta"),
     "PUERTO VALLARTA": ("Puerto Vallarta", "alta"),
     "GUADALAJARA 2": ("Guadalajara", "alta"),
     "LAGOS DE MORENO": ("Lagos de Moreno", "alta"),
-    "JOSE MARIA MARTINEZ": ("Mazamitla", "estimada"),
+    "JOSE MARIA MARTINEZ": ("Tamazula de Gordiano", "alta"),
     "TONALA": ("Tonalá", "alta"),
     "ZAPOPAN": ("Zapopan", "alta"),
     "GUADALAJARA 3": ("Guadalajara", "alta"),
-    "GUADALAJARA 1": ("Guadalajara", "alta"),
+    "GUADALAJARA 1": ("Tlaquepaque", "alta"),
     "JUANACATLAN": ("Juanacatlán", "alta"),
     "ACATLAN DE JUAREZ": ("Acatlán de Juárez", "alta"),
     "ARANDAS": ("Arandas", "alta"),
@@ -63,14 +70,34 @@ PLANTEL_A_MUNICIPIO = {
     "TAPALPA": ("Tapalpa", "alta"),
 }
 
-# Direcciones publicas encontradas para algunos planteles (ver README para fuentes
-# y fecha). No se intento geocodificar / no hay coordenadas GPS: el formato
-# oficial de sueldos nunca trae domicilio, estas son de fuentes externas sueltas.
+# Direcciones oficiales por plantel, tomadas el 2026-10-07 de la sección
+# "Ubicación" de cada página de plantel en conalepjalisco.edu.mx (sitio oficial
+# y vigente de CONALEP Jalisco), salvo donde se indica otra fuente. El formato
+# de sueldos nunca trae domicilio - esto es un enriquecimiento con datos
+# públicos de otra obligación/fuente del mismo sujeto obligado. Sin coordenadas
+# GPS: no se geocodificó nada.
 PLANTEL_DIRECCION = {
-    "ACATLAN DE JUAREZ": ("Av. CONALEP No. 5, Col. El Plan, Acatlán de Juárez, Jalisco, C.P. 45700", 2017),
-    "ARANDAS": ("Presidente Gustavo Díaz Ordaz No. 40, Col. Linda Vista, Arandas, Jalisco, C.P. 47180", 2017),
-    "JALOSTOTITLAN": ("Prolongación a Tierras Blancas s/n, La Manzanilla, Jalostotitlán, Jalisco, C.P. 47120", 2017),
+    "GUADALAJARA 1": ("Calle Bajío No. 115, Col. Las Juntas, Tlaquepaque, Jalisco, C.P. 45590", 2026),
+    "GUADALAJARA 2": ("Calle Isla Salomón No. 2553, Col. Jardines del Sur, Guadalajara, Jalisco, C.P. 44950", 2026),
+    "GUADALAJARA 3": ("Prolongación Av. Patria S/N, Col. Rancho Nuevo, Guadalajara, Jalisco, C.P. 44240", 2026),
+    "TLAQUEPAQUE": ("Esteban Ramírez No. 220, Esq. J. Álvarez del Castillo, Col. Residencial La Soledad, Tlaquepaque, Jalisco, C.P. 45525", 2026),
+    "TONALA": ("Dunas Norte No. 180, Col. Lomas del Camichín, Tonalá, Jalisco, C.P. 45417", 2026),
+    "ZAPOPAN": ("Francisco Villa S/N, Esq. Av. Patria, Col. Loma Bonita Ejidal, Zapopan, Jalisco, C.P. 45085", 2026),
+    "CENTRO MEXICANO ITALIANO": ("Felipe Ruvalcaba S/N, Col. Paseos del Sol, Zapopan, Jalisco, C.P. 45070", 2026),
+    "ACATLAN DE JUAREZ": ("Avenida Conalep No. 5, Col. El Plan, Acatlán de Juárez, Jalisco, C.P. 45700", 2026),
+    "ARANDAS": ("Gustavo Díaz Ordaz No. 40, Col. Lindavista, Arandas, Jalisco, C.P. 47180", 2026),
+    "CHAPALA": ("Carretera Libramiento Chapala-Ajijic No. 202, Chapala, Jalisco, C.P. 45900", 2026),
+    "JALOSTOTITLAN": ("Calle Loma del Realengo S/N, Col. La Manzanilla, Jalostotitlán, Jalisco, C.P. 47120", 2026),
+    "JUANACATLAN": ("Km 1 Carretera Ex Hacienda de Zapotlanejo S/N, Col. Tateposco, Juanacatlán, Jalisco, C.P. 45880", 2026),
+    "LA BARCA": ("Avenida Conalep No. 90, Col. San Antonio, La Barca, Jalisco, C.P. 47910", 2026),
+    "LAGOS DE MORENO": ("Avenida Conalep S/N, Carr. Lagos-La Unión, Lagos de Moreno, Jalisco, C.P. 47480", 2026),
+    "PUERTO VALLARTA": ("Calle Viena No. 111, Esq. Av. Fco. Villa, Fracc. Las Gaviotas, Puerto Vallarta, Jalisco, C.P. 48310", 2026),
+    "PUERTO VALLARTA II": ("Calle Federación No. 412, Col. Colinas Universitarias, Puerto Vallarta, Jalisco, C.P. 48280", 2026),
+    "TAPALPA": ("Calle Durazno No. 288, Localidad Atacco, Tapalpa, Jalisco, C.P. 49340", 2026),
+    "JOSE MARIA MARTINEZ": ("Salvador Esquer Apodaca No. 36, Col. Obrera Benito Juárez 2da Etapa, Tamazula de Gordiano, Jalisco, C.P. 49653", 2026),
     "DIRECCION GENERAL": ("Av. Salvador Vargas 3035, Paseos del Sol 1a Sección, Zapopan, Jalisco, C.P. 45079", 2024),
+    # CAST Zapopan: el directorio oficial confirma oficina activa en Zapopan
+    # (directorio-dg del sitio), pero su página de plantel no publica domicilio.
 }
 
 

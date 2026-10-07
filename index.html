@@ -61,6 +61,7 @@
             <th>Puesto</th>
             <th>Plantel</th>
             <th>Municipio</th>
+            <th>Dirección</th>
             <th>Sexo</th>
             <th>Bruto mensual</th>
             <th>Neto mensual</th>
@@ -78,8 +79,8 @@
       <li><strong>Fuente:</strong> export oficial "formato 46307 — Remuneraciones brutas y netas" de CONALEP Jalisco, vía la Plataforma Nacional de Transparencia. Periodo: agosto 2026. Fecha de actualización reportada por el sujeto obligado: 08/09/2026.</li>
       <li><strong>Alcance:</strong> esta base es <em>solo de CONALEP Jalisco</em> (Colegio de Educación Profesional Técnica del Estado de Jalisco), no de todas las dependencias del estado.</li>
       <li><strong>Archivo incompleto:</strong> la descarga original se cortó antes de cerrarse por completo. Se recuperaron 550 registros íntegros; puede haber registros adicionales que no se alcanzaron a descargar. <a href="README.md">Ver cómo actualizar los datos</a>.</li>
-      <li><strong>Municipio:</strong> el archivo oficial no incluye municipio, solo "Área de adscripción" (el plantel). Para 18 de los 20 planteles el municipio es inequívoco a partir de su nombre. Para 2 planteles ("Centro Mexicano Italiano" → Zapopan, "José María Martínez" → Mazamitla) el municipio viene de una fuente secundaria, no de un directorio oficial vigente — estos registros se marcan con <span class="badge-confianza">municipio estimado</span> en la tabla.</li>
-      <li><strong>Dirección / geolocalización:</strong> el formato oficial nunca incluye domicilio ni coordenadas. Se agregó la dirección pública solo para los 4 planteles donde se encontró una fuente confiable (2 de 2017, puede estar desactualizada); el resto no tiene dirección disponible. No se generaron coordenadas GPS.</li>
+      <li><strong>Municipio:</strong> el archivo oficial no incluye municipio, solo "Área de adscripción" (el plantel). El municipio real de cada uno de los 20 planteles se verificó visitando el <a href="https://www.conalepjalisco.edu.mx/web/index.php/conocenos/planteles-jalisco" target="_blank" rel="noopener">directorio oficial de planteles de CONALEP Jalisco</a> — ojo, el nombre del plantel no siempre coincide con el municipio real: "Guadalajara 1" está físicamente en Tlaquepaque, y "José María Martínez" (nombre completo "Tamazula José Ma. Martínez R.") está en Tamazula de Gordiano.</li>
+      <li><strong>Dirección / geolocalización:</strong> el formato oficial de sueldos nunca incluye domicilio ni coordenadas. Se agregó el domicilio público de cada plantel tomado del mismo directorio oficial (consultado el 7 de octubre de 2026); la única excepción es Dirección General, cuyo domicilio viene de un documento de planeación estatal 2024. No se generaron coordenadas GPS.</li>
     </ul>
   </section>
 </main>

@@ -114,6 +114,7 @@
         <td>${escapeHtml(r.puesto)}</td>
         <td>${escapeHtml(r.plantel)}</td>
         <td>${escapeHtml(r.municipio)}${confianza}</td>
+        <td>${escapeHtml(r.direccion)}</td>
         <td>${escapeHtml(r.sexo)}</td>
         <td class="money">${money(r.sueldo_bruto)}</td>
         <td class="money">${money(r.sueldo_neto)}</td>
@@ -187,6 +188,6 @@
       render();
     })
     .catch((err) => {
-      els.tbody.innerHTML = `<tr><td colspan="7">No se pudieron cargar los datos: ${escapeHtml(err.message)}</td></tr>`;
+      els.tbody.innerHTML = `<tr><td colspan="8">No se pudieron cargar los datos: ${escapeHtml(err.message)}</td></tr>`;
     });
 })();
